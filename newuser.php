@@ -8,7 +8,7 @@ if (!isset( $_POST['submit'] )) {
     echo "<p>ERROR form was not submitted</p>";
 }
 else {
-    $sql = "insert into users (firstname, surname, email, password) values ('".$_POST['fname']."','".$_POST['sname']."','".$_POST['email']."','".$_POST['pass']."')";
+    $sql = "insert into users (firstname, lastname, email, password) values ('".$_POST['fname']."','".$_POST['sname']."','".$_POST['email']."','".$_POST['pass']."')";
 
     if (!$mysqli->query($sql)) {
 echo "Error:" .$mysqli->error;

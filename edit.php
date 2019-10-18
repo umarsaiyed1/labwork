@@ -7,7 +7,7 @@ if (isset( $_POST['submit'] )) //NB this implies you called your submit button â
 
 $updatequery = "UPDATE users SET 
       firstname = '" .$_POST['fname']."' ,
-	surname = '" .$_POST['sname']."' ,
+	lastname = '" .$_POST['sname']."' ,
 	email = '" .$_POST['email']."' ,
 	password = '" .$_POST['pass']."' 
 	Where ID = '" .$_GET['id']."' ";
@@ -32,7 +32,7 @@ else
       while($row = $result->fetch_assoc()) 
       {
         $fn = $row['firstname'];
-	  $sn = $row['surname'];
+	  $sn = $row['lastname'];
 	  $em = $row['email'];
 	  $pw = $row['password'];
 	  }
@@ -63,3 +63,4 @@ else
 <?php	
 } //this bracket closes the one that opened at if ($result) and NOT the else block which we are within!
 }
+

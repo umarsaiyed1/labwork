@@ -1,12 +1,16 @@
-<?php>
+<?php
 $servername = "localhost";
 $username = "student";
-$password = "website";
+$password= "website";
 $dbasename = "firstlab";
 
-//create connection
+
+// Create connection
+$mysqli = new mysqli($servername, $username, $password, $dbasename);
+
+// Check connection
 if ($mysqli->connect_errno) {
-printf("connect failed: %s\n", $mysqli->connect_error);
-exit();
+    printf("Connect failed: %s\n", $mysqli->connect_error);
+    exit();
 }
 ?>
