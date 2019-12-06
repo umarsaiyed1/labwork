@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html> 
+
+  <head>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+    <title> CommentProgram  </title>
+  <script>
+    $(document).ready(function(){
+
+          
+        var comments;
+        var promise = [];
+        promise.push (
+	        $.ajax({
+		        url: "retrieveComments.php",
+		        success: function(data){
+			        comments = data;
+		        },
+		        datatype: "json"
+	        })
+        );
+	
+        $.when.apply($, promise).then(function(){
+	        $.each(comments, function(i, item) {
+		        $("#comments").append("<div class=\"comment\">"+item.comments+"</div>");
+	        });
+        });                
+      
+        var newComment;
+
+        $("#addComment").click(function(){
+            newComment = $("#newComment").val();
+         
+
+            var dataString = "com="+newComment;
+            $.ajax({
+	            url: "insertNew.php",
+	            type: "POST",
+	            data: dataString,
+	            success: function(data){
+		            console.log('success');
+	            }			
+            });
+
+           $("#comments").append("<div class=\"comment\">"+newComment+"</div>");
+        });
+    });  
+  </script>
+  </head>
+  <body>
+<h1> Snakebook.com </h1>
+<p> Official site </p>
+ <div id="comments"> </div>
+<textarea id="newComment" rows="6" cols="50"></textarea>
+<br>
+
+<button id="addComment"> Submit </button> 
+   
+  </body>
+</html>
